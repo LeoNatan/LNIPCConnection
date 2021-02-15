@@ -1,6 +1,6 @@
-# DetoxIPC
+# LNIPCConnection
 
-DetoxIPC is an asynchronous, bi-directional inter-process remote invocation library for Apple platforms with an API similar to Apple's `NSXPCConnection`.
+`LNIPCConnection` is an asynchronous, bi-directional inter-process remote invocation library for Apple platforms with an API similar to Apple's `NSXPCConnection`.
 
 Once a connection is established, messages sent to remote proxies are serialized over mach ports to their remote counterparts. Block parameters are supported, and their lifetime is mirrored to their remote proxy counterparts (if a proxy block is retained and remains active for use, so is the local proxy).
 
@@ -10,7 +10,7 @@ Once a connection is established, messages sent to remote proxies are serialized
 
 Include the project in your projects and link it.
 
-Read the `DTXIPCConnection.h` header for full documentation.
+Read the `LNIPCConnection.h` header for full documentation.
 
 First, create a common protocol, which will be used to define the interface between remote objects.
 
@@ -23,7 +23,7 @@ First, create a common protocol, which will be used to define the interface betw
 @end
 ```
 
-On the server process, create an class which implements the common protocol you have defined. Create a `DTXIPCConnection` object with a named service, set an exported interface and finally set the exported object. Optionally, you can also set the remote object interface for bi-directional communication.
+On the server process, create an class which implements the common protocol you have defined. Create a `LNIPCConnection` object with a named service, set an exported interface and finally set the exported object. Optionally, you can also set the remote object interface for bi-directional communication.
 
 ```objc
 @interface MyObject : NSObject <ExampleProtocol> @end
@@ -43,8 +43,8 @@ On the server process, create an class which implements the common protocol you 
 
 //…
   
-_connection = [[DTXIPCConnection alloc] initWithServiceName:@"MyService"];
-_connection.exportedInterface = [DTXIPCInterface interfaceWithProtocol:@protocol(ExampleProtocol)];
+_connection = [[LNIPCConnection alloc] initWithServiceName:@"MyService"];
+_connection.exportedInterface = [LNIPCInterface interfaceWithProtocol:@protocol(ExampleProtocol)];
 _connection.exportedObject = [[MyObject alloc] init];
 
 [_connection resume];
@@ -53,8 +53,8 @@ _connection.exportedObject = [[MyObject alloc] init];
 On the client process, connect to the registered named service, set the remote object interface and obtain a remote proxy object. You can now use this proxy object as if it is an instance of the remote object.
 
 ```objc
-_connection = [[DTXIPCConnection alloc] initWithServiceName:@"MyService"];
-_connection.remoteObjectInterface = [DTXIPCInterface interfaceWithProtocol:@protocol(ExampleProtocol)];
+_connection = [[LNIPCConnection alloc] initWithServiceName:@"MyService"];
+_connection.remoteObjectInterface = [LNIPCInterface interfaceWithProtocol:@protocol(ExampleProtocol)];
 
 [_connection resume];
 
@@ -87,3 +87,9 @@ Completion handler called with options: {
     Test = Passed;
 }
 ```
+
+
+
+#### Acknowledgements
+
+Originally developed by me for Wix.

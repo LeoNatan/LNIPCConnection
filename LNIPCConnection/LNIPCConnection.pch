@@ -1,0 +1,14 @@
+//
+//  LNIPCConnection.pch
+//  LNIPCConnection
+//
+//  Created by Leo Natan on 12/10/17.
+//  Copyright © 2019-2021 Leo Natan. All rights reserved.
+//
+
+#ifndef LNIPCConnection_pch
+#define LNIPCConnection_pch
+
+#import "Swiftier.h"
+
+#endif /* LNIPCConnection_pch */
