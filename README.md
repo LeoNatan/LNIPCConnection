@@ -1,6 +1,6 @@
 # LNIPCConnection
 
-`LNIPCConnection` is an asynchronous, bi-directional inter-process remote invocation library for Apple platforms with an API similar to Apple's `NSXPCConnection`.
+`LNIPCConnection` is an asynchronous, bidirectional inter-process remote invocation framework for Apple platforms, with an API similar to Apple's `NSXPCConnection`.
 
 Once a connection is established, messages sent to remote proxies are serialized over mach ports to their remote counterparts. Block parameters are supported, and their lifetime is mirrored to their remote proxy counterparts (if a proxy block is retained and remains active for use, so is the local proxy).
 
