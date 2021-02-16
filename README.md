@@ -29,14 +29,16 @@ On the server process, create an class which implements the common protocol you 
 @interface MyObject : NSObject <ExampleProtocol> @end
 @implementation MyObject
   
-- (void)performOperationWithCompletionHandler:(dispatch_block_t)block {
-  NSLog(@"Called performOperationWithCompletionHandler:");
-  block();
+- (void)performOperationWithCompletionHandler:(dispatch_block_t)block
+{
+	NSLog(@"Called performOperationWithCompletionHandler:");
+	block();
 }
 
-- (void)performOperationWithOptions:(NSDictionary*)options completionHandler:(NSDictionary* options)block {
-  NSLog(@"Called performOperationWithOptions:completionHandler: with options: %@", options);
-  block(options);
+- (void)performOperationWithOptions:(NSDictionary*)options completionHandler:(NSDictionary* options)block
+{
+	NSLog(@"Called performOperationWithOptions:completionHandler: with options: %@", options);
+	block(options);
 }
 
 @end
@@ -60,12 +62,12 @@ _connection.remoteObjectInterface = [LNIPCInterface interfaceWithProtocol:@proto
 
 id<ExampleProtocol> remoteProxyObject = _connection.remoteObjectProxy;
 
-[remoteProxyObject performOperationWithCompletionHandler:^{
-  NSLog("Completion handler called");
+[remoteProxyObject performOperationWithCompletionHandler:^ {
+	NSLog("Completion handler called");
 }];
 
 [remoteProxyObject performOperationWithOptions:@{@"Test": @"Passed"} completionHandler:^ (NSDictionary* options) {
-  NSLog("Completion handler called with options: %@", options);
+	NSLog("Completion handler called with options: %@", options);
 }];
 ```
 
