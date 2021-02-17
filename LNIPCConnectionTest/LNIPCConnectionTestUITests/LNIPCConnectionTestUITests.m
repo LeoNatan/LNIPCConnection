@@ -34,7 +34,7 @@
 	
 	__block XCUIApplication *app;
 	
-	_connection = [[LNIPCConnection alloc] initWithServiceName:@"com.wix.DetoxIPCTest"];
+	_connection = [[LNIPCConnection alloc] initWithServiceName:@"com.LeoNatan.LNIPCConnectionTest"];
 	_connection.remoteObjectInterface = [LNIPCInterface interfaceWithProtocol:@protocol(TestProtocol)];
 	_connection.invalidationHandler = ^{
 		wasInvalidated = YES;
