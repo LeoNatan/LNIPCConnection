@@ -23,7 +23,7 @@ First, create a common protocol, which will be used to define the interface betw
 @end
 ```
 
-On the server process, create an class which implements the common protocol you have defined. Create a `LNIPCConnection` object with a named service, set an exported interface and finally set the exported object. Optionally, you can also set the remote object interface for bi-directional communication.
+On the server process, create a class which implements the common protocol you have defined. Create an `LNIPCConnection` object with a named service, set an exported interface and set the exported object. Optionally, you can also set the remote object interface for bi-directional communication.
 
 ```objc
 @interface MyObject : NSObject <ExampleProtocol> @end
